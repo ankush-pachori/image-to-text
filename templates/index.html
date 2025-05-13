@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwriting to Text Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-pen-fancy"></i> Handwriting to Text Converter</h1>
+            <p class="subtitle">Convert your handwritten text to digital format instantly</p>
+        </header>
+
+        <div class="card upload-card">
+            <div class="card-header">
+                <h2><i class="fas fa-cloud-upload-alt"></i> Upload Image</h2>
+            </div>
+            <div class="upload-area" id="dropZone">
+                <i class="fas fa-file-image upload-icon"></i>
+                <p>Drag and drop your image here or</p>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <button class="btn" onclick="document.getElementById('fileInput').click()">
+                    <i class="fas fa-folder-open"></i> Choose File
+                </button>
+            </div>
+            <div id="imagePreview" class="image-preview"></div>
+        </div>
+
+        <div class="card result-card">
+            <div class="card-header">
+                <h2><i class="fas fa-text-width"></i> Extracted Text</h2>
+            </div>
+            <div class="text-area">
+                <textarea id="extractedText" readonly placeholder="Extracted text will appear here..."></textarea>
+            </div>
+            <div class="button-group">
+                <button class="btn primary" id="extractBtn" disabled>
+                    <i class="fas fa-magic"></i> Extract Text
+                </button>
+                <button class="btn secondary" id="searchBtn" disabled>
+                    <i class="fas fa-search"></i> Search on Web
+                </button>
+                <button class="btn" id="copyBtn" disabled>
+                    <i class="fas fa-copy"></i> Copy Text
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loader" class="loader">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
